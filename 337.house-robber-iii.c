@@ -5,18 +5,18 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
-struct TreeNode {
+struct TrieNode {
     int val;
-    struct TreeNode *left;
-    struct TreeNode *right;
+    struct TrieNode *left;
+    struct TrieNode *right;
 };
 // @lc code=start
 /**
  * Definition for a binary tree node.
- * struct TreeNode {
+ * struct TrieNode {
  *     int val;
- *     struct TreeNode *left;
- *     struct TreeNode *right;
+ *     struct TrieNode *left;
+ *     struct TrieNode *right;
  * };
  */
 
@@ -24,7 +24,7 @@ int max(int a ,int b) {
     return a > b ? a : b;
 }
 
-int* _rob(struct TreeNode* root){
+int* _rob(struct TrieNode* root){
     int *ret = (int *)calloc(2, sizeof(int));
     if (NULL == root) return ret;
     int *left = _rob(root->left);
@@ -34,7 +34,7 @@ int* _rob(struct TreeNode* root){
     return ret;
 }
 
-int rob(struct TreeNode* root){
+int rob(struct TrieNode* root){
     if (NULL == root) return 0;
     int *ret = _rob(root);
     return max(ret[0], ret[1]);
